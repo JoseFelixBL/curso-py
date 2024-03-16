@@ -29,6 +29,10 @@ def ordena(elemento):
     return elemento[1]
 
 
+usuarios.sort(key=ordena, reverse=True)
+print(usuarios)
+# print(usu_ord)
+
 # usuarios.sort(key=ordena, reverse=True)
 # usuarios.sort(key=lambda parametros: contenidoDeLaFunción, reverse=True)
 # usuarios.sort(key=lambda parametros: valorRetorno, reverse=True)
