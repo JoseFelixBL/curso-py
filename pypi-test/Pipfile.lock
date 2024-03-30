@@ -1,0 +1,29 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "2585edcc901a1ad19a13a257f72fe6153d175f5e8986907513f1334faa21320c"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.12"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "holamundoplayer44": {
+            "hashes": [
+                "sha256:9e7ba341e24fcee44fed1900dc507eb35cc38f208c9832880b0797618fc394ef",
+                "sha256:ed2d94f65f69d53cec61e22dd68da2c538456959e0406be8aeea4511b2028272"
+            ],
+            "index": "pypi",
+            "version": "==0.0.1"
+        }
+    },
+    "develop": {}
+}
