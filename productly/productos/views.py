@@ -1,5 +1,7 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.http import Http404, HttpResponse
+from django.shortcuts import render, get_object_or_404
+
+from .forms import ProductoForm
 from .models import Producto
 
 # Create your views here.
@@ -8,14 +10,40 @@ from .models import Producto
 
 
 def index(request):
-    #    return HttpResponse('¡Hola Mundo!') # para ver que llegamos a esta pg.
+    productos = Producto.objects.all()  # Todos los registros de DDBB
+    return render(
+        request,
+        'index.html',  # La plantilla
+        context={'productos': productos}  # Los datos en forma de diccionario
+    )
 
-    # Para hacer un prototyping rápido devuelvo una lista de JSON
-    # productos = Producto.objects.filter(puntaje=5)
-    # productos = Producto.objects.filter(puntaje__gte=3) # __lte, __gt, __lt
-    # productos = Producto.objects.get(pk=1) # solo el que tenga primary key = 1
 
-    productos = Producto.objects.all().values()  # Todos los registros de DDBB
-    print(productos)
-    # return HttpResponse(productos[0].nombre)
-    return JsonResponse(list(productos), safe=False)
+def detalle(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    return render(
+        request,
+        'detalle.html',
+        context={'producto': producto}
+    )
+
+    # try:
+    #     producto = Producto.objects.get(id=producto_id)
+
+    #     return render(
+    #         request,
+    #         'detalle.html',
+    #         context={'producto': producto}
+    #     )
+    # except Producto.DoesNotExist:
+    #     raise Http404()
+
+
+def formulario(request):
+    form = ProductoForm()
+
+    return render(
+        request,
+        'producto_form.html',
+        {'form': form}
+    )
