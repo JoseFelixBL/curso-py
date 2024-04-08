@@ -1,10 +1,10 @@
 {% for field in form %}
     <div class="mb-3">
         {{ field.label_tag }} {{ field }}
-        {% for error in field.errors %}
-            <div id="validationServer03Feedback" class="invalid-feedback"
+        <div class="invalid-feedback">
+            {% for error in field.errors %}
                 {{ error }}
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endfor %}
