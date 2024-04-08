@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from django.forms.renderers import TemplatesSetting
+
+
+class CustomFormRenderer(TemplatesSetting):
+    form_template_name = 'form_snippet.html'  # Nombre del arch. HTML base
+
+
+FORM_RENDERER = 'productly.settings.CustomFormRenderer'
+# La app django.forms tiene que estar instalada (ver más abajo)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
